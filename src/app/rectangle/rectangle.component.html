@@ -1,0 +1,9 @@
+<div class="rectangle-wrapper">
+  <div>{{elem.value}}</div>
+  <div class="rectangle" [style]="{
+    height:[elem.value + 'px'],
+    backgroundColor: getColor(),
+    width: [getWidth() + 'px']
+}">
+  </div>
+</div>

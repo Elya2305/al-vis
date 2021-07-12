@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Sorting</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <div class="d-flex">
+            <span class="material-icons mt-2">navigate_next</span>
+            <select [disabled]="sorting" class="form-select al-selector" [(ngModel)]="algorithm">
+              <option value="Selection sort">Selection sort</option>
+              <option value="Bubble sort">Bubble sort</option>
+              <option value="Insertion sort">Insertion sort</option>
+              <option value="Quick sort">Quick sort</option>
+            </select>
+          </div>
+        </li>
+      </ul>
+
+      <div class="speeder">
+        <label for="speed" class="form-label">Delay: {{delayMs + 20}}ms</label>
+        <input type="range" class="form-range" min="0" max="1000" step="0.5" id="speed" [(ngModel)]="delayMs">
+      </div>
+
+      <div class="d-flex total-elem-form">
+        <input class="form-control me-sm-2" type="number" min="2" max="45" [(ngModel)]="total" (input)="setTotal()" [disabled]="sorting">
+      </div>
+      <button type="button" class="btn btn-outline-warning mx-1" (click)="fillRandomNumbers()" [disabled]="sorting">Render</button>
+      <button type="button" class="btn btn-outline-warning mx-1" (click)="sort()" [disabled]="sorting">Sort</button>
+
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="mt-4">
+    <div class="d-flex justify-content-start">
+      <app-rectangle *ngFor="let n of numbers" [elem]="n" [width]="getWidth()"></app-rectangle>
+    </div>
+  </div>
+</div>
+
